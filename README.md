@@ -1,50 +1,49 @@
-# Mini RAG Chatbot 
+# Mini RAG Chatbot
 
 ## Overview
-This project implements a Retrieval-Augmented Generation (RAG) system for answering queries using internal documents. The system retrieves relevant document chunks and generates grounded responses using an LLM.
 
----
+This project implements a Retrieval-Augmented Generation (RAG) chatbot that answers questions based on custom documents.
 
 ## Features
-- Semantic search using embeddings
-- FAISS-based vector retrieval
-- LLM-based answer generation (OpenRouter)
-- Streamlit chatbot interface
-- Transparent display of retrieved context
 
----
+* Semantic search using embeddings
+* FAISS vector database
+* LLM-based answer generation (OpenRouter API)
+* Streamlit UI
 
 ## Tech Stack
-- Python
-- Sentence Transformers (all-MiniLM-L6-v2)
-- FAISS (vector search)
-- OpenRouter (LLM API)
-- Streamlit (frontend)
 
----
+* Python
+* Sentence Transformers
+* FAISS
+* OpenRouter (LLM)
+* Streamlit
 
 ## How It Works
 
-### 1. Document Processing
-- Documents are loaded from `.md` files
-- Split into chunks (size = 500, overlap = 50)
-
-### 2. Embeddings
-- Each chunk is converted into vector embeddings using Sentence Transformers
-
-### 3. Vector Search
-- FAISS is used to store embeddings
-- Top-k relevant chunks are retrieved using similarity search
-
-### 4. Answer Generation
-- Retrieved chunks are passed as context to the LLM
-- The model is instructed to answer ONLY from context
-- Prevents hallucination
-
----
+1. Documents are loaded and split into chunks
+2. Each chunk is converted into embeddings
+3. FAISS index is created for similarity search
+4. User query → converted to embedding
+5. Relevant chunks are retrieved
+6. LLM generates answer based on context
 
 ## How to Run
 
 ```bash
 pip install -r requirements.txt
+set OPENROUTER_API_KEY=your_api_key
 streamlit run app.py
+```
+
+## Example Query
+
+"What does Indecimal provide?"
+
+## Output
+
+The chatbot retrieves relevant document chunks and generates a contextual answer.
+
+## Note
+
+API keys are managed securely using environment variables.
