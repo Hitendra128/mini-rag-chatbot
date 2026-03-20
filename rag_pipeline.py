@@ -1,6 +1,6 @@
 from openai import OpenAI
 client = OpenAI(
-    api_key="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",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
     base_url="https://openrouter.ai/api/v1"
 )
 from sentence_transformers import SentenceTransformer
